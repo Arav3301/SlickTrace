@@ -46,7 +46,7 @@ export function ExportReportButton({ investigation, candidates }: Props) {
       type="button"
       onClick={handleExport}
       disabled={busy}
-      className="border border-line-strong bg-paper px-3 py-1 text-[13px] text-sl transition-colors hover:border-ink-2 hover:text-ink disabled:opacity-50"
+      className="border border-line-strong bg-paper px-3 py-1.5 text-[13px] text-sl transition-colors hover:border-ink-2 hover:text-ink disabled:opacity-50"
     >
       {busy ? "Generating…" : "Export report"}
     </button>

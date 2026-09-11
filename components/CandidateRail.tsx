@@ -24,7 +24,7 @@ export function CandidateBrowseList({ candidates, investigation, onOpen }: Brows
           {formatNumber(investigation.candidate_count)} screened · top 5 by score
         </p>
       </div>
-      <ol className="rail-scroll min-h-0 flex-1 overflow-y-auto">
+      <ol className="min-h-0 lg:rail-scroll lg:flex-1 lg:overflow-y-auto">
         {candidates.map((c) => (
           <CandidateEntry
             key={c.candidate_rank}

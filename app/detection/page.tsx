@@ -89,7 +89,7 @@ export default function DetectionPage() {
       {/* ============================================================ */}
 
       <header className="border-b border-line bg-paper">
-        <div className="flex items-center justify-between px-6 py-3">
+        <div className="flex items-center justify-between px-4 py-3 sm:px-6">
           <Link
             href="/"
             className="text-[15px] font-semibold uppercase tracking-[0.14em] text-ink hover:text-marine"
@@ -99,11 +99,11 @@ export default function DetectionPage() {
           <nav className="flex items-center gap-1 text-[13px]">
             <Link
               href="/"
-              className="px-3 py-1.5 text-ink-2 transition-colors hover:text-ink"
+              className="px-2 py-1.5 text-ink-2 transition-colors hover:text-ink sm:px-3"
             >
               Investigation
             </Link>
-            <span className="border border-ink bg-ink px-3 py-1.5 font-medium text-paper">
+            <span className="border border-ink bg-ink px-2 py-1.5 font-medium text-paper sm:px-3">
               Detection
             </span>
           </nav>
@@ -114,7 +114,7 @@ export default function DetectionPage() {
       {/*  Title                                                       */}
       {/* ============================================================ */}
 
-      <div className="border-b border-line px-6 py-5">
+      <div className="border-b border-line px-4 py-5 sm:px-6">
         <h1 className="text-[26px] font-semibold tracking-tight text-ink">
           Detection Analysis
         </h1>
@@ -141,7 +141,7 @@ export default function DetectionPage() {
         </div>
       </div>
 
-      <main className="mx-auto max-w-[960px] px-6 py-10">
+      <main className="mx-auto max-w-[960px] px-4 py-10 sm:px-6">
 
         {/* ============================================================ */}
         {/*  PIPELINE — Editorial visual story                           */}
@@ -163,7 +163,7 @@ export default function DetectionPage() {
               </h3>
             </div>
 
-            <div className="ml-[52px]">
+            <div className="ml-0 sm:ml-[52px]">
               {/* Real SAR preview — Sigma0 VV dB from Zenodo 4672426 */}
               <div className="border border-line overflow-hidden">
                   <Image
@@ -221,7 +221,7 @@ export default function DetectionPage() {
               </h3>
             </div>
 
-            <div className="ml-[52px]">
+            <div className="ml-0 sm:ml-[52px]">
               <p className="mb-5 max-w-[640px] text-[16px] leading-relaxed text-ink-2">
                 <span className="font-semibold text-ink">Pixel-by-pixel slick segmentation.</span>{" "}
                 U-Net predicts how likely each pixel is to belong to an oil-slick
@@ -263,7 +263,7 @@ export default function DetectionPage() {
               </h3>
             </div>
 
-            <div className="ml-[52px]">
+            <div className="ml-0 sm:ml-[52px]">
               <p className="mb-5 max-w-[640px] text-[16px] leading-relaxed text-ink-2">
                 The model does not simply flag slick or no-slick. U-Net scores
                 every SAR pixel between 0 and 1. Thresholding that real score is
@@ -417,7 +417,7 @@ export default function DetectionPage() {
               </h3>
             </div>
 
-            <div className="ml-[52px]">
+            <div className="ml-0 sm:ml-[52px]">
               <p className="max-w-[640px] text-[16px] leading-relaxed text-ink-2">
                 The binary mask is converted to a georeferenced polygon in UTM
                 zone 16N and projected to WGS 84. This is the predicted slick
@@ -522,7 +522,7 @@ export default function DetectionPage() {
             ).map(([name, value], i) => (
               <div
                 key={name}
-                className={`flex items-baseline gap-6 py-3 ${i < 4 ? "border-b border-line" : ""}`}
+                className={`flex flex-wrap items-baseline gap-x-6 gap-y-1 py-3 ${i < 4 ? "border-b border-line" : ""}`}
               >
                 <span className="w-[120px] shrink-0 text-[14px] font-medium text-ink">
                   {name}
@@ -530,7 +530,7 @@ export default function DetectionPage() {
                 <span className="tnum w-[80px] shrink-0 font-mono text-[20px] font-semibold text-ink">
                   {value.toFixed(4)}
                 </span>
-                <span className="text-[14px] leading-snug text-ink-2">
+                <span className="w-full text-[14px] leading-snug text-ink-2 sm:w-auto sm:flex-1">
                   {METRIC_EXPLANATIONS[name]}
                 </span>
               </div>
@@ -545,7 +545,7 @@ export default function DetectionPage() {
             <span className="text-[13px] text-faint">{SCENE.sceneId}</span>
           </div>
 
-          <div className="mt-4 grid grid-cols-5 gap-px bg-line">
+          <div className="mt-4 grid grid-cols-2 gap-px bg-line sm:grid-cols-5">
             {(
               [
                 ["Dice", METRICS.thisScene.dice],
@@ -559,7 +559,7 @@ export default function DetectionPage() {
                 <div className="tnum text-[22px] font-semibold text-ink">
                   {value.toFixed(3)}
                 </div>
-                <div className="mt-1 text-[11px] font-medium uppercase tracking-[0.04em] text-faint">
+                <div className="mt-1 text-[12px] font-medium uppercase tracking-[0.04em] text-faint">
                   {name}
                 </div>
               </div>
@@ -609,16 +609,16 @@ export default function DetectionPage() {
         {/*  NAVIGATION                                                  */}
         {/* ============================================================ */}
 
-        <div className="mt-16 flex items-center justify-between border-t border-line pt-6">
+        <div className="mt-16 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-6">
           <Link
             href="/"
-            className="text-[15px] font-medium text-marine hover:text-ink"
+            className="py-1 text-[15px] font-medium text-marine hover:text-ink"
           >
             {"\u2190"} Back to investigation
           </Link>
           <Link
             href="/"
-            className="text-[15px] font-medium text-marine hover:text-ink"
+            className="py-1 text-[15px] font-medium text-marine hover:text-ink"
           >
             View candidate correlation {"\u2192"}
           </Link>
@@ -626,7 +626,7 @@ export default function DetectionPage() {
       </main>
 
       {/* ---- Footer ---- */}
-      <footer className="mt-8 border-t border-line px-6 py-4 text-[12px] text-faint">
+      <footer className="mt-8 border-t border-line px-4 py-4 text-[12px] text-faint sm:px-6">
         SlickTrace {"\u00b7"} SIH26143 {"\u00b7"} Validated Investigation Replay
       </footer>
     </div>

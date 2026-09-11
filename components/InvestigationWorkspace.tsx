@@ -110,7 +110,7 @@ export function InvestigationWorkspace() {
       : null;
 
   return (
-    <div className="flex min-h-0 flex-col bg-paper lg:h-screen lg:overflow-hidden">
+    <div className="flex flex-col bg-paper lg:h-screen lg:min-h-0 lg:overflow-hidden">
       <InvestigationHeader />
       <InvestigationTitleRow investigation={investigation}>
         <ExportReportButton
@@ -119,8 +119,8 @@ export function InvestigationWorkspace() {
         />
       </InvestigationTitleRow>
 
-      <main className="flex min-h-0 flex-1 flex-col lg:flex-row">
-        <div className="relative min-h-[50vh] w-full lg:min-h-0 lg:flex-[7]">
+      <main className="flex min-h-0 flex-col bg-paper lg:flex-1 lg:flex-row">
+        <div className="relative min-h-[max(52vh,420px)] w-full lg:h-full lg:min-h-0 lg:flex-[7]">
           <MapCanvas
             investigation={investigation}
             slickMain={slickMain}
@@ -129,6 +129,11 @@ export function InvestigationWorkspace() {
             selectedRank={selectedRank}
             onSelect={setSelectedRank}
           />
+        </div>
+
+        {/* Mobile: key metrics sit between the map and the candidates */}
+        <div className="lg:hidden">
+          <MetadataStrip investigation={investigation} />
         </div>
 
         <aside
@@ -152,7 +157,10 @@ export function InvestigationWorkspace() {
         </aside>
       </main>
 
-      <MetadataStrip investigation={investigation} />
+      {/* Desktop only — the mobile copy renders above the candidates */}
+      <div className="hidden lg:block">
+        <MetadataStrip investigation={investigation} />
+      </div>
       <ProvenanceFooter investigation={investigation} />
     </div>
   );

@@ -33,6 +33,22 @@ export function InvestigationHeader() {
           <ValidatedReplayBadge />
         </div>
       </div>
+      {/* Mobile: section navigation on its own compact row */}
+      <nav
+        data-mobile-nav
+        aria-label="Sections"
+        className="flex items-center gap-2 border-t border-line px-5 py-1.5 text-[13px] md:hidden"
+      >
+        <span className="border border-ink bg-ink px-3 py-2 font-medium text-paper">
+          Investigation
+        </span>
+        <Link
+          href="/detection"
+          className="px-2 py-2 text-ink-2 transition-colors hover:text-ink"
+        >
+          Detection
+        </Link>
+      </nav>
     </header>
   );
 }

@@ -65,7 +65,7 @@ export function VesselDetail({ candidate, candidates, onBack, onNavigate }: Deta
   return (
     <section
       aria-label="Vessel detail"
-      className="rail-scroll flex min-h-0 flex-1 flex-col overflow-y-auto bg-paper"
+      className="flex min-h-0 flex-col bg-paper lg:rail-scroll lg:flex-1 lg:overflow-y-auto"
     >
       {/* Back + navigation */}
       <div className="flex-none border-b border-line px-5 py-3">
@@ -149,33 +149,33 @@ export function VesselDetail({ candidate, candidates, onBack, onNavigate }: Deta
         </h3>
 
         <div className="mt-4 space-y-4">
-          <div className="grid items-baseline" style={{ gridTemplateColumns: "minmax(150px, 1fr) minmax(190px, auto)" }}>
+          <div className="grid grid-cols-1 gap-1 sm:grid-cols-[minmax(0,1fr)_minmax(0,auto)] sm:items-baseline">
             <span className="text-[14px] font-medium text-ink-2">Track intersection</span>
-            <span className="tnum text-right text-[14px] font-medium text-ink">
+            <span className="text-[14px] font-medium text-ink sm:text-right">
               {intersects ? "Intersects predicted slick" : "Does not intersect"}
             </span>
           </div>
           <div className="border-t border-line/50" />
 
-          <div className="grid items-baseline" style={{ gridTemplateColumns: "minmax(150px, 1fr) minmax(190px, auto)" }}>
+          <div className="grid grid-cols-1 gap-1 sm:grid-cols-[minmax(0,1fr)_minmax(0,auto)] sm:items-baseline">
             <span className="text-[14px] font-medium text-ink-2">Spatial proximity</span>
-            <span className="tnum text-right text-[14px] font-medium text-ink">
+            <span className="text-[14px] font-medium text-ink sm:text-right">
               {formatCompactKm(candidate.track_distance_to_slick_km)}
             </span>
           </div>
           <div className="border-t border-line/50" />
 
-          <div className="grid items-baseline" style={{ gridTemplateColumns: "minmax(150px, 1fr) minmax(190px, auto)" }}>
+          <div className="grid grid-cols-1 gap-1 sm:grid-cols-[minmax(0,1fr)_minmax(0,auto)] sm:items-baseline">
             <span className="text-[14px] font-medium text-ink-2">Temporal relevance</span>
-            <span className="tnum text-right text-[14px] font-medium text-ink">
+            <span className="text-[14px] font-medium text-ink sm:text-right">
               {formatHours(candidate.hours_before_satellite)} before satellite acquisition
             </span>
           </div>
           <div className="border-t border-line/50" />
 
-          <div className="grid items-baseline" style={{ gridTemplateColumns: "minmax(150px, 1fr) minmax(190px, auto)" }}>
+          <div className="grid grid-cols-1 gap-1 sm:grid-cols-[minmax(0,1fr)_minmax(0,auto)] sm:items-baseline">
             <span className="text-[14px] font-medium text-ink-2">Route alignment</span>
-            <span className="tnum text-right text-[14px] font-medium text-ink">
+            <span className="text-[14px] font-medium text-ink sm:text-right">
               {formatDegrees(candidate.alignment_difference_deg)} difference
             </span>
           </div>

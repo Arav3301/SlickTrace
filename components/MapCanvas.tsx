@@ -557,17 +557,17 @@ export function MapCanvas({
   return (
     <div className="relative h-full w-full overflow-hidden bg-[#cfe3ee]">
       {/* Layer controls */}
-      <div className="absolute left-3 top-3 z-10 flex flex-col gap-1.5 border border-line bg-paper/90 px-3 py-2.5">
+      <div className="absolute left-2 top-2 z-10 flex flex-row flex-wrap items-center justify-end gap-x-4 gap-y-1 border border-line bg-paper/90 px-3 py-2 sm:right-2 lg:left-3 lg:right-auto lg:top-3 lg:w-auto lg:flex-col lg:items-start lg:justify-start lg:gap-x-0 lg:gap-y-1.5 lg:px-3 lg:py-2.5">
         {TOGGLES.map((t) => (
           <label
             key={t.id}
-            className="flex cursor-pointer items-center gap-2.5 text-[13px] text-ink-2"
+            className="flex cursor-pointer items-center gap-2.5 py-0.5 text-[13px] text-ink-2 lg:py-0"
           >
             <input
               type="checkbox"
               checked={visible[t.id]}
               onChange={() => setVisible((v) => ({ ...v, [t.id]: !v[t.id] }))}
-              className="h-3.5 w-3.5 accent-[#37586e]"
+              className="h-4 w-4 accent-[#37586e]"
             />
             {t.label}
           </label>
@@ -587,14 +587,14 @@ export function MapCanvas({
               });
             }
           }}
-          className="mt-1 border-t border-line pt-2 text-left text-[12.5px] font-medium text-marine hover:text-ink"
+          className="text-left text-[12.5px] font-medium text-marine hover:text-ink lg:mt-1 lg:border-t lg:border-line lg:pt-2"
         >
           Reset view
         </button>
       </div>
 
-      {/* Coordinate readout */}
-      <div className="pointer-events-none absolute bottom-2 left-4 z-10 font-mono text-[12px] text-ink-2">
+      {/* Coordinate readout — hidden on small touch screens */}
+      <div className="pointer-events-none absolute bottom-2 left-4 z-10 hidden font-mono text-[12px] text-ink-2 sm:block">
         <span ref={readoutRef} className="border border-line-strong bg-paper px-2.5 py-1.5 shadow-sm">
           …
         </span>
