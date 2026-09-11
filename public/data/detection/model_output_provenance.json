@@ -1,0 +1,85 @@
+{
+  "kind": "model_output_preview",
+  "scene": "2018_09_26",
+  "model": "U-Net",
+  "checkpoint": "best validation Dice",
+  "threshold": 0.55,
+  "probability_source": "2018_09_26_probability.tif",
+  "binary_source": "2018_09_26_binary.tif",
+  "synthetic": false,
+  "probability_raster": {
+    "width": 5083,
+    "height": 2555,
+    "bands": 1,
+    "dtype": "float32",
+    "crs": "EPSG:32616",
+    "resolution_m": 10,
+    "min": 1.2377958033549241e-11,
+    "max": 0.9979292154312134,
+    "nodata": null
+  },
+  "binary_raster": {
+    "width": 5083,
+    "height": 2555,
+    "bands": 1,
+    "dtype": "uint8",
+    "crs": "EPSG:32616",
+    "resolution_m": 10,
+    "min": 0,
+    "max": 1,
+    "nodata": null
+  },
+  "threshold_validation": {
+    "probability_pixels_ge_0.55": 472495,
+    "bundled_binary_positive_pixels": 558812,
+    "counts_match_exact": false,
+    "note": "The bundled 2018_09_26_binary.tif contains 558,812 positive pixels and is reproduced by thresholding the probability raster at approximately 0.20, not 0.55. Every pixel with probability >= 0.55 (472,495) is inside that mask, but the mask adds 86,317 extra pixels with scores 0.20-0.55. The published pipeline report lists 473,772 predicted oil pixels, reproduced at probability >= 0.54546; exactly >= 0.55 on this raster measures 472,495 (floating-point rounding, about 0.3%)."
+  },
+  "display_decision": "Stage 03 shows FOCUSED ROI previews cropped to the predicted-slick bounding box. Both visuals are re-derived from the REAL probability raster at the documented threshold 0.55 (full resolution, then downsampling). The bundled 2018_09_26_binary.tif was NOT used as the display source because its ~0.20 effective threshold conflicts with the documented 0.55 pipeline output. Full-scene 1500x754 previews remain available in this directory.",
+  "roi_crop": {
+    "column_range_px": [3021, 5051],
+    "row_range_px": [458, 2554],
+    "width_px": 2031,
+    "height_px": 2097,
+    "width_km": 20.31,
+    "height_km": 20.97,
+    "padding": "12% of the positive-mask bounding box, symmetric, clipped to the 5083x2555 scene edge",
+    "basis": "bounding box of all pixels with probability >= 0.55 (472,495 pixels) at full resolution",
+    "pixel_count_ratio": 1.0,
+    "note": "Identical crop window used for the probability and binary ROI previews. 100% of the 472,495 positive mask pixels fall inside the crop."
+  },
+  "previews": [
+    {
+      "file": "2018_09_26_probability_roi.png",
+      "source": "2018_09_26_probability.tif cropped to roi_crop",
+      "width": 1500,
+      "height": 1549,
+      "resampling": "bicubic after crop",
+      "visualization": "Single-channel warm-progressive LUT over a dark neutral base: dark = low slick score, increasingly warm/brighter = higher slick score. Values used as-is in [0,1]; no percentile remapping; aspect ratio preserved."
+    },
+    {
+      "file": "2018_09_26_binary_roi.png",
+      "source": "2018_09_26_probability.tif thresholded at 0.55 cropped to roi_crop",
+      "width": 1500,
+      "height": 1549,
+      "resampling": "nearest",
+      "visualization": "Background = warm off-white (#f6f3ec); predicted slick = muted amber (#8a5a1e). Binary at full resolution (>= 0.55) then nearest-neighbor downsampling; no smoothing, no interpolation of mask edges. 472,495 positive pixels, all contained in the crop."
+    },
+    {
+      "file": "2018_09_26_probability_preview.png",
+      "source": "2018_09_26_probability.tif",
+      "width": 1500,
+      "height": 754,
+      "resampling": "average",
+      "visualization": "Full-scene context view. Same visualization as the ROI preview. No percentile stretch."
+    },
+    {
+      "file": "2018_09_26_binary_preview.png",
+      "source": "2018_09_26_probability.tif thresholded at 0.55",
+      "width": 1500,
+      "height": 754,
+      "resampling": "nearest",
+      "visualization": "Full-scene context view. Background = warm off-white (#f6f3ec); predicted slick = muted amber (#8a5a1e). 472,495 positive pixels."
+    }
+  ]
+}

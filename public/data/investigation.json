@@ -1,0 +1,84 @@
+{
+  "investigation_id": "SLICKTRACE-DEMO-20180926",
+  "satellite": "Sentinel-1A",
+  "scene_date": "2018-09-26",
+  "satellite_time_utc": "2018-09-26T00:01:45.547Z",
+  "model": "U-Net",
+  "threshold": 0.55,
+  "main_slick": {
+    "area_km2": 34.103,
+    "centroid_lat": 28.905266,
+    "centroid_lon": -89.022854
+  },
+  "model_metrics": {
+    "dice": 0.5277,
+    "iou": 0.3584,
+    "precision": 0.4214,
+    "recall": 0.7055,
+    "specificity": 0.9649
+  },
+  "candidate_count": 225,
+  "top_candidates": [
+    {
+      "rank": 1,
+      "mmsi": 636017218,
+      "vessel_name": "CHIQUITA EXPRESS",
+      "association_score": 92.08,
+      "association_label": "Strong association",
+      "track_intersects_slick": true,
+      "distance_to_slick_km": 0.0,
+      "hours_before_satellite": 1.898,
+      "course_deg": 236.6,
+      "alignment_difference_deg": 35.7
+    },
+    {
+      "rank": 2,
+      "mmsi": 366987890,
+      "vessel_name": "CAPT RUDY",
+      "association_score": 90.73,
+      "association_label": "Strong association",
+      "track_intersects_slick": true,
+      "distance_to_slick_km": 0.0,
+      "hours_before_satellite": 1.748,
+      "course_deg": 251.5,
+      "alignment_difference_deg": 50.6
+    },
+    {
+      "rank": 3,
+      "mmsi": 367556640,
+      "vessel_name": "CAPT DONALD LOWE SR",
+      "association_score": 69.73,
+      "association_label": "Moderate association",
+      "track_intersects_slick": true,
+      "distance_to_slick_km": 0.0,
+      "hours_before_satellite": 11.667,
+      "course_deg": 254.5,
+      "alignment_difference_deg": 53.6
+    },
+    {
+      "rank": 4,
+      "mmsi": 367019880,
+      "vessel_name": "LA CHEVAL",
+      "association_score": 46.0,
+      "association_label": "Possible association",
+      "track_intersects_slick": false,
+      "distance_to_slick_km": 1.059,
+      "hours_before_satellite": 4.515,
+      "course_deg": 63.8,
+      "alignment_difference_deg": 42.9
+    },
+    {
+      "rank": 5,
+      "mmsi": 367425340,
+      "vessel_name": "CAPT MASON",
+      "association_score": 45.0,
+      "association_label": "Possible association",
+      "track_intersects_slick": false,
+      "distance_to_slick_km": 1.619,
+      "hours_before_satellite": 4.193,
+      "course_deg": 54.8,
+      "alignment_difference_deg": 33.9
+    }
+  ],
+  "disclaimer": "Association scores rank potential source candidates and do not establish legal responsibility."
+}

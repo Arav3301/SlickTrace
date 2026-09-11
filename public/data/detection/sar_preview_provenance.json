@@ -1,0 +1,20 @@
+{
+  "scene": "2018_09_26",
+  "satellite": "Sentinel-1A",
+  "polarization": "VV",
+  "source_dataset": "Zenodo 4672426",
+  "source_type": "real SAR raster",
+  "source_filename": "Radar_data.rar > test/images/2018_09_26.tif",
+  "source_band": "Sigma0_VV_db",
+  "source_bytes": 51969263,
+  "source_crs": "EPSG:32616",
+  "source_width": 5083,
+  "source_height": 2555,
+  "resolution_m": 10.0,
+  "visualization": "grayscale percentile-stretched preview",
+  "preview_contrast": "2.0-98.0 robust percentile stretch",
+  "preview_output": "public/data/detection/2018_09_26_sar_preview.png",
+  "preview_width": 1500,
+  "preview_height": 754,
+  "synthetic": false
+}

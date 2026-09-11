@@ -1,0 +1,159 @@
+@import "tailwindcss";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+@theme {
+  /* ---- SlickTrace palette: editorial cartography ---- */
+  --color-paper: #f6f3ec; /* warm off-white ground */
+  --color-paper-2: #eeeae1; /* slightly deeper inset surface */
+  --color-ink: #23252f; /* deep ink / near-navy text */
+  --color-ink-2: #3a3e4c; /* secondary ink */
+  --color-sl: #62687a; /* muted slate for secondary text */
+  --color-faint: #8d93a3; /* tertiary / weak text */
+  --color-line: #d9d5c9; /* neutral divider */
+  --color-line-strong: #c6c1b3; /* stronger divider */
+  --color-marine: #37607c; /* restrained marine blue */
+  --color-marine-ink: #2a4a60;
+  --color-amber: #a9712c; /* muted amber — predicted slick */
+  --color-amber-deep: #8a5a1e;
+  --color-signal: #c5521f; /* signal orange — active evidence */
+  --color-green: #3f6d52; /* muted green — strong association */
+
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* tabular numerals for data-heavy reads */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+::selection {
+  background: rgba(197, 82, 31, 0.18);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+}
+
+/* ---------- MapLibre surface alignment ---------- */
+.maplibregl-map {
+  font-family: var(--font-sans);
+}
+.maplibregl-canvas {
+  outline: none;
+}
+.maplibregl-ctrl-group {
+  border-radius: 4px;
+  border: 1px solid var(--color-line-strong);
+  background: rgba(246, 243, 236, 0.92);
+  box-shadow: 0 1px 3px rgba(35, 37, 47, 0.08);
+}
+.maplibregl-ctrl-group button {
+  background-color: transparent;
+}
+.maplibregl-ctrl-group button:hover {
+  background-color: var(--color-paper-2);
+}
+.maplibregl-ctrl button .maplibregl-ctrl-icon {
+  filter: brightness(0.9);
+}
+.maplibregl-popup-content {
+  background: var(--color-paper);
+  border: 1px solid var(--color-line-strong);
+  border-radius: 6px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 8px rgba(35, 37, 47, 0.12);
+  color: var(--color-ink);
+  font-size: 14px;
+  line-height: 1.45;
+}
+.maplibregl-popup-tip {
+  border-top-color: var(--color-line-strong);
+}
+.maplibregl-popup-anchor-top .maplibregl-popup-tip {
+  border-bottom-color: var(--color-line-strong);
+}
+.maplibregl-ctrl-attrib {
+  font-size: 11px;
+  color: var(--color-sl);
+}
+.maplibregl-ctrl-scale .maplibregl-ctrl-scale {
+  background: rgba(246, 243, 236, 0.9);
+  border-color: var(--color-ink-2);
+  color: var(--color-ink-2);
+  font-size: 11px;
+}
+/* Position scale control above the coordinate readout */
+.maplibregl-ctrl-bottom-left .maplibregl-ctrl-scale {
+  bottom: 28px !important;
+}
+
+/* thin, calm scrollbars inside panels */
+.rail-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.rail-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border-radius: 3px;
+}
+.rail-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ============================================================ */
+/*  Detection page — print output                               */
+/* ============================================================ */
+
+/* Keep each processing stage together when printed/exported. */
+.stage-block {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Show the static SVG evidence figure only in print. */
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm 14mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+  }
+
+  .screen-only {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  /* exact colours so the amber slick geometry survives printing */
+  .print-only *,
+  .stage-block,
+  .stage-block * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
